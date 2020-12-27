@@ -24,12 +24,13 @@
           class="my-info"
           style="display: flex; flex-direction: column; justify-content: center"
         >
+          <span class="group-name">{{ groupsData[0].name }}</span>
           <span
-            style="font-family: 'Josefin Sans', sans-serif; font-size: 16px; color: #424b54;"
-            >{{ groupsData[0].name }}</span
-          >
-          <span
-            style="font-family: 'Josefin Sans', sans-serif; font-size: 12px; color: #424b54;"
+            style="
+              font-family: 'Josefin Sans', sans-serif;
+              font-size: 12px;
+              color: #424b54;
+            "
             >{{ groupsData[0].email }}</span
           >
         </div>
@@ -58,7 +59,7 @@ export default {
   height: 98%;
   display: flex;
   flex-direction: column;
-  border: 10px solid #fff3df;
+  border: 10px solid #f7b538;
   border-radius: 20px;
   border-right: #fcfcfc;
   border-top-right-radius: 0px;
@@ -106,5 +107,49 @@ img {
   color: #fcfcfc;
   font-family: "Josefin Sans", sans-serif;
   font-size: 20px;
+}
+.group-name {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 16px;
+  color: #424b54;
+}
+@media screen and (max-width: 768px) {
+  .sidebar {
+    background-color: #f7b538;
+    width: 100%;
+    height: 70px;
+    display: flex;
+    flex-direction: row;
+    border: none;
+    border-radius: 20px;
+    justify-content: space-between;
+    padding: 0px 10px;
+    align-items: center;
+  }
+  .logo {
+    height: unset;
+    padding: 0px;
+  }
+  .my-photo {
+    display: none;
+  }
+  .nav {
+    width: 55%;
+    height: unset;
+    flex-direction: row;
+  }
+  img {
+    height: 20px;
+  }
+  .home-link {
+    width: 60px;
+  }
+  .my-profile {
+    width: 160px;
+    text-align: right;
+  }
+  .group-name {
+    font-size: 12px;
+  }
 }
 </style>

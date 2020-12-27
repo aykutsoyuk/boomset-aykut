@@ -125,7 +125,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #fae7c5;
+  background-color: #fcfcfc;
 }
 
 .container {
@@ -136,5 +136,11 @@ body {
   align-items: center;
   background-color: #fcfcfc;
   border-radius: 20px;
+}
+@media screen and (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    padding: 10px 0px;
+  }
 }
 </style>

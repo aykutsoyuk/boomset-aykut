@@ -20,14 +20,13 @@
             laudantium maxime reprehenderit molestiae voluptatum deserunt est
             officia dolor cupiditate eos repellat temporibus labore soluta a
             earum cum, et porro architecto dignissimos eaque qui distinctio
-            commodi minima hic? 
-            <br>
-            <br>
-            Nemo sed harum sequi. 
-            <br>
-            <br>
-            Dolorum suscipit deserunt
-            beatae inventore hic tenetur quod nemo?
+            commodi minima hic?
+            <br />
+            <br />
+            Nemo sed harum sequi.
+            <br />
+            <br />
+            Dolorum suscipit deserunt beatae inventore hic tenetur quod nemo?
           </p>
         </div>
         <div style="color: #424b54; font-size: 32px">
@@ -86,7 +85,7 @@ export default {
   width: 70%;
   height: 98%;
   background-color: #fcfcfc;
-  border: 10px solid #fff3df;
+  border: 10px solid #f7b538;
   border-radius: 20px;
   border-left: #fcfcfc;
   border-top-left-radius: 0px;
@@ -122,7 +121,7 @@ export default {
   width: 50%;
   background-color: #fcfcfc;
   font-family: "Josefin Sans", sans-serif;
-    border-left: 2px solid rgba(204, 204, 204, 0.24);
+  border-left: 2px solid rgba(204, 204, 204, 0.24);
   border-radius: 2px;
 }
 .session {
@@ -143,10 +142,17 @@ export default {
   border: none;
 }
 .image {
-width: 100%;
-margin-bottom: 20px;
+  width: 100%;
+  margin-bottom: 20px;
   height: 120px;
   border-radius: 20px;
   background-color: #f7b538;
+}
+@media screen and (max-width: 768px) {
+  .details-container {
+    width: 100%;
+    height: unset;
+    border: none;
+  }
 }
 </style>
