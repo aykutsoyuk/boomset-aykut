@@ -56,6 +56,11 @@ export default {
 .events {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  height: 100%;
+  overflow: scroll;
+  border-left: 2px solid  rgba(204, 204, 204, 0.24);
+  border-radius: 2px;
 }
 .event-container {
   display: flex;

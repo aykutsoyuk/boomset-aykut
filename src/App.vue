@@ -4,7 +4,7 @@
       <div class="container">
         <Sidebar :groupsData="groups" />
         <Home :eventsData="events" @goToDetails="selectedEvent($event)"/>
-        <!-- <EventDetails /> -->
+        <EventDetails v-if="eventData !== null" :eventData="eventData" :eventSessions="eventSessions" :eventGuests="eventGuests"/>
       </div>
     </div>
   </div>
@@ -13,24 +13,55 @@
 <script>
 import Sidebar from "./components/Sidebar.vue";
 import Home from "./components/Home.vue";
-// import EventDetails from "./components/EventDetails.vue";
+import EventDetails from "./components/EventDetails.vue";
 
 export default {
   name: "App",
   components: {
     Sidebar,
     Home,
-    // EventDetails,
+    EventDetails,
   },
   data() {
     return {
       events: [],
       groups: [],
+      eventSessions: null,
+      eventData: null,
+      eventGuests: null,
+      requestOptions : {
+      method: "GET",
+      headers: {
+        "Content-type": "application/json",
+        Authorization: "Token ed56d8f5cbc4f810ff1a7a5ccb7af8e6",
+      },
+      redirect: "follow",
+    },
     };
   },
   methods: {
     selectedEvent(id) {
-      console.log(id)
+      // Get selected event sessions
+      fetch(`/events/${id}/sessions`, this.requestOptions)
+      .then((response) => response.json())
+      .then((result) => {
+        this.eventSessions = result.results;
+      })
+      .catch((error) => console.log("error", error));
+      // Get selected event guests
+      fetch(`/events/${id}/guests`, this.requestOptions)
+      .then((response) => response.json())
+      .then((result) => {
+        this.eventGuests = result.count;
+      })
+      .catch((error) => console.log("error", error));
+      // Get selected event data
+      fetch(`/events/${id}`, this.requestOptions)
+      .then((response) => response.json())
+      .then((result) => {
+        this.eventData = result;
+      })
+      .catch((error) => console.log("error", error));
     },
     getEvents(eventsData) {
       this.events = eventsData;
@@ -40,23 +71,15 @@ export default {
     },
   },
   created() {
-    var requestOptions = {
-      method: "GET",
-      headers: {
-        "Content-type": "application/json",
-        Authorization: "Token ed56d8f5cbc4f810ff1a7a5ccb7af8e6",
-      },
-      redirect: "follow",
-    };
     // Request to take events data
-    fetch("/events", requestOptions)
+    fetch("/events", this.requestOptions)
       .then((response) => response.json())
       .then((result) => {
         this.getEvents(result.results);
       })
       .catch((error) => console.log("error", error));
     // Request to take groups data
-    fetch("/groups", requestOptions)
+    fetch("/groups", this.requestOptions)
       .then((response) => response.json())
       .then((result) => {
         this.getGroups(result.results);
