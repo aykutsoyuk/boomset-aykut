@@ -2,9 +2,19 @@
   <div id="app">
     <div class="main-container">
       <div class="container">
-        <Sidebar :groupsData="groups" />
-        <Home :eventsData="events" @goToDetails="selectedEvent($event)"/>
-        <EventDetails v-if="eventData !== null" :eventData="eventData" :eventSessions="eventSessions" :eventGuests="eventGuests"/>
+        <Sidebar :groupsData="groups" @backToHome="backToHome()" />
+        <Home
+          v-if="!showDetails"
+          :eventsData="events"
+          @goToDetails="selectedEvent($event)"
+        />
+        <EventDetails
+          v-if="showDetails"
+          :eventData="eventData"
+          :eventSessions="eventSessions"
+          :eventGuests="eventGuests"
+          @backToHome="backToHome()"
+        />
       </div>
     </div>
   </div>
@@ -29,45 +39,50 @@ export default {
       eventSessions: null,
       eventData: null,
       eventGuests: null,
-      requestOptions : {
-      method: "GET",
-      headers: {
-        "Content-type": "application/json",
-        Authorization: "Token ed56d8f5cbc4f810ff1a7a5ccb7af8e6",
+      showDetails: false,
+      requestOptions: {
+        method: "GET",
+        headers: {
+          "Content-type": "application/json",
+          Authorization: "Token ed56d8f5cbc4f810ff1a7a5ccb7af8e6",
+        },
+        redirect: "follow",
       },
-      redirect: "follow",
-    },
     };
   },
   methods: {
     selectedEvent(id) {
       // Get selected event sessions
       fetch(`/events/${id}/sessions`, this.requestOptions)
-      .then((response) => response.json())
-      .then((result) => {
-        this.eventSessions = result.results;
-      })
-      .catch((error) => console.log("error", error));
+        .then((response) => response.json())
+        .then((result) => {
+          this.eventSessions = result.results;
+          this.showDetails = true;
+        })
+        .catch((error) => console.log("error", error));
       // Get selected event guests
       fetch(`/events/${id}/guests`, this.requestOptions)
-      .then((response) => response.json())
-      .then((result) => {
-        this.eventGuests = result.count;
-      })
-      .catch((error) => console.log("error", error));
+        .then((response) => response.json())
+        .then((result) => {
+          this.eventGuests = result.count;
+        })
+        .catch((error) => console.log("error", error));
       // Get selected event data
       fetch(`/events/${id}`, this.requestOptions)
-      .then((response) => response.json())
-      .then((result) => {
-        this.eventData = result;
-      })
-      .catch((error) => console.log("error", error));
+        .then((response) => response.json())
+        .then((result) => {
+          this.eventData = result;
+        })
+        .catch((error) => console.log("error", error));
     },
     getEvents(eventsData) {
       this.events = eventsData;
     },
     getGroups(groupsData) {
       this.groups = groupsData;
+    },
+    backToHome() {
+      this.showDetails = false;
     },
   },
   created() {

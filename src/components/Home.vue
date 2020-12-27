@@ -12,10 +12,10 @@
           <span style="color: #ff6b6b; margin: 8px 0px">{{
             new Date(event.starts).toLocaleString()
           }}</span>
-          <h3 style="margin: 8px 0px">
+          <h3 style="margin: 8px 0px; color: #424b54;">
             {{ event.name }}
           </h3>
-          <p style="padding: 2px; margin: 8px 0px; font-size: 12px">
+          <p style="padding: 2px; margin: 8px 0px; font-size: 12px; color: #424b54;">
             Lorem, ipsum dolor sit amet consectetur adipisicing elit.
             Reprehenderit suscipit, sint hic quaerat sunt amet sit vero
             inventore aliquam error!
@@ -32,7 +32,7 @@ export default {
   props: ["eventsData"],
   methods: {
     goToDetails(eventId) {
-        this.$emit("goToDetails", eventId)
+      this.$emit("goToDetails", eventId);
     },
     sortedEvents(events) {
       return events.sort((a, b) => (a.name > b.name ? 1 : -1));
@@ -59,10 +59,11 @@ export default {
   align-items: center;
   height: 100%;
   overflow: scroll;
-  border-left: 2px solid  rgba(204, 204, 204, 0.24);
+  border-left: 2px solid rgba(204, 204, 204, 0.24);
   border-radius: 2px;
 }
 .event-container {
+    cursor: pointer;
   display: flex;
   align-items: center;
   width: 90%;
@@ -70,6 +71,10 @@ export default {
   margin-top: 20px;
   border-radius: 20px;
   font-family: "Josefin Sans", sans-serif;
+}
+.event-container:hover {
+    transition: ease 0.5s;
+    box-shadow: 1px 4px 5px 0.1px rgb(160, 160, 160);
 }
 .event-image {
   width: 150px;

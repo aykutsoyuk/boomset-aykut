@@ -7,7 +7,7 @@
       />
     </div>
     <div class="nav">
-      <a href="#" class="home-link"
+      <a href="#" class="home-link" @click="backToHome()"
         ><span
           style="
             color: #fcfcfc;
@@ -24,10 +24,12 @@
           class="my-info"
           style="display: flex; flex-direction: column; justify-content: center"
         >
-          <span style="font-family: 'Josefin Sans', sans-serif; font-size: 16px"
+          <span
+            style="font-family: 'Josefin Sans', sans-serif; font-size: 16px; color: #424b54;"
             >{{ groupsData[0].name }}</span
           >
-          <span style="font-family: 'Josefin Sans', sans-serif; font-size: 12px"
+          <span
+            style="font-family: 'Josefin Sans', sans-serif; font-size: 12px; color: #424b54;"
             >{{ groupsData[0].email }}</span
           >
         </div>
@@ -39,7 +41,12 @@
 <script>
 export default {
   name: "Sidebar",
-  props: ["groupsData"]
+  props: ["groupsData"],
+  methods: {
+    backToHome() {
+      this.$emit("backToHome", true);
+    },
+  },
 };
 </script>
 
