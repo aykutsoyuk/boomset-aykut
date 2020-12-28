@@ -18,23 +18,21 @@ Aykut Söyük
 
 ### Uygulamayı local olarak çalıştırmak için: 
 
-1- Github reposunu bilgisayarınıza klonlayın.
-2- Klonladığınız dosyanın içinde "npm install" komutunu çalıştırın.
-3- "npm run serve" komutu ile uygulamayı çalıştırın. 
-4- Tarayıcınızda localhost:8080'e gidin.
+1. Github reposunu bilgisayarınıza klonlayın.
+2. Klonladığınız dosyanın içinde "npm install" komutunu çalıştırın.
+3. "npm run serve" komutu ile uygulamayı çalıştırın. 
+4. Tarayıcınızda localhost:8080'e gidin.
 
 ### İyileştirmeler
 
-[] Vue Router uygulamak
-
-[] Kullanıcı arayüzü için API error yakalama
+- [ ] Vue Router uygulamak
+- [ ] Kullanıcı arayüzü için API error yakalama
 
 
 ### Known Bugs
 
-[] API cevabı geldikten sonra "EventDetails" componenti bir süre için render olmuyor. Ve UI yapısı bozuluyor.
-
-[] API'dan cevap gelmeden detay sayfası açılıyor ve küçük bir an için bir önceki eventin bilgisi görünüyor.
+- [ ] API cevabı geldikten sonra "EventDetails" componenti bir süre için render olmuyor. Ve UI yapısı bozuluyor.
+- [ ] API'dan cevap gelmeden detay sayfası açılıyor ve küçük bir an için bir önceki eventin bilgisi görünüyor.
 
 
 ### Kopyala yapıştır
