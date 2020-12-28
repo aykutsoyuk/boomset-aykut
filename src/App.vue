@@ -142,7 +142,7 @@ body {
   background-color: #fcfcfc;
   border-radius: 20px;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 768px), screen and (max-height: 600px) {
   .container {
     flex-direction: column;
     padding: 10px 0px;

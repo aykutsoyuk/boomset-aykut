@@ -113,7 +113,7 @@ img {
   font-size: 16px;
   color: #424b54;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 768px), screen and (max-height: 600px) {
   .sidebar {
     background-color: #f7b538;
     width: 100%;

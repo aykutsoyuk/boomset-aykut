@@ -160,7 +160,7 @@ export default {
   font-weight: 700;
   color: #424b54;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 768px), screen and (max-height: 600px) {
   .sessions-container {
     justify-content: space-between;
   }

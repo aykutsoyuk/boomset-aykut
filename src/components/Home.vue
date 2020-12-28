@@ -115,7 +115,8 @@ export default {
 .search-bar {
   padding-left: 20px;
   width: 50%;
-  height: 40px;
+  min-height: 40px;
+  max-height: 40px;
   border: none;
   background-color: rgba(192, 192, 192, 0.233);
   color: #424b547e;
@@ -132,7 +133,7 @@ export default {
   outline: none;
   padding-left: 18px;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 768px), screen and (max-height: 600px) {
   .home {
     width: 100%;
     height: unset;
@@ -140,6 +141,7 @@ export default {
   }
   .events {
     border: none;
+    margin-top: auto;
   }
 }
 @media screen and (max-width: 450px) {
