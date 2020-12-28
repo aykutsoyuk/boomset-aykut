@@ -1,12 +1,12 @@
 <template>
-  <div class="details-container">
-    <div class="event-header">
-    <span>{{ eventData.name }}</span>
+  <div class="container__details">
+    <div class="event__header">
+      <span>{{ eventData.name }}</span>
     </div>
-    <div class="event-data">
-      <div class="details">
-        <div class="image"></div>
-        <div class="dates" style="color: #424b54">
+    <div class="event__data">
+      <div class="event__details">
+        <div class="event__image"></div>
+        <div class="event__dates" style="color: #424b54">
           Start:
           <span style="color: #ff6b6b">{{
             new Date(eventData.starts).toLocaleString()
@@ -17,7 +17,7 @@
             new Date(eventData.ends).toLocaleString()
           }}</span>
         </div>
-        <div class="info">
+        <div class="event__info">
           <p style="color: #424b54">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Modi
             laudantium maxime reprehenderit molestiae voluptatum deserunt est
@@ -36,7 +36,7 @@
           {{ eventGuests }} Guests
         </div>
       </div>
-      <div class="sessions-container">
+      <div class="container__sessions">
         <h3 style="color: #424b54">Sessions</h3>
         <div
           v-for="session in sortedSessions(eventSessions)"
@@ -74,6 +74,7 @@ export default {
     backToHome() {
       this.$emit("backToHome", true);
     },
+    // Sorting sessions
     sortedSessions(sessions) {
       return sessions.sort((a, b) => (a.starts > b.starts ? 1 : -1));
     },
@@ -84,7 +85,7 @@ export default {
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600;700&display=swap");
 
-.details-container {
+.container__details {
   width: 70%;
   height: 98%;
   background-color: #fcfcfc;
@@ -95,7 +96,7 @@ export default {
   border-bottom-left-radius: 0px;
   padding: 20px;
 }
-.event-data {
+.event__data {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -105,7 +106,7 @@ export default {
   border-left: 2px solid rgba(204, 204, 204, 0.24);
   border-radius: 2px;
 }
-.details {
+.event__details {
   padding: 20px;
   width: 50%;
   height: 100%;
@@ -115,7 +116,7 @@ export default {
   flex-direction: column;
   justify-content: space-evenly;
 }
-.sessions-container {
+.container__sessions {
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -145,14 +146,14 @@ export default {
   border: none;
   margin-top: 60px;
 }
-.image {
+.event__image {
   width: 100%;
   margin-bottom: 20px;
   height: 120px;
   border-radius: 20px;
   background-color: #f7b538;
 }
-.event-header {
+.event__header {
   text-align: center;
   font-size: 24px;
   font-family: "Josefin Sans", sans-serif;
@@ -161,28 +162,28 @@ export default {
   color: #424b54;
 }
 @media screen and (max-width: 768px), screen and (max-height: 600px) {
-  .sessions-container {
+  .container__sessions {
     justify-content: space-between;
   }
-  .details-container {
+  .container__details {
     width: 100%;
     height: unset;
     border: none;
   }
-  .event-data {
+  .event__data {
     border: none;
   }
 }
 @media screen and (max-width: 550px) {
-  .event-data {
+  .event__data {
     border: none;
     flex-direction: column;
   }
-  .details {
+  .event__details {
     width: unset;
     padding-bottom: 10px;
   }
-  .sessions-container {
+  .container__sessions {
     width: 100%;
     border-left: unset;
     border-top: 2px solid rgba(204, 204, 204, 0.24);

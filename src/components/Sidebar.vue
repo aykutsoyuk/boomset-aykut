@@ -1,13 +1,13 @@
 <template>
   <div class="sidebar">
-    <div class="logo">
+    <div class="sidebar__logo">
       <img
         src="https://assets.website-files.com/58adbcb04effab671dfe73aa/5eac5d659e363e4a1f99d079_Boomset%20Logo%20wTagline.png"
         alt="Boomset Logo"
       />
     </div>
-    <div class="nav">
-      <a href="#" class="home-link" @click="backToHome()"
+    <div class="sidebar__links">
+      <a href="#" class="sidebar__links--home" @click="backToHome()"
         ><span
           style="
             color: #fcfcfc;
@@ -18,13 +18,13 @@
           >Home</span
         ></a
       >
-      <div class="my-profile">
-        <div class="my-photo">{{ groupsData[0].name.charAt(0) }}</div>
+      <div class="group__profile">
+        <div class="group__photo">{{ groupsData[0].name.charAt(0) }}</div>
         <div
-          class="my-info"
+          class="group__info"
           style="display: flex; flex-direction: column; justify-content: center"
         >
-          <span class="group-name">{{ groupsData[0].name }}</span>
+          <span class="group__name">{{ groupsData[0].name }}</span>
           <span
             style="
               font-family: 'Josefin Sans', sans-serif;
@@ -65,7 +65,7 @@ export default {
   border-top-right-radius: 0px;
   border-bottom-right-radius: 0px;
 }
-.logo {
+.sidebar__logo {
   display: flex;
   justify-content: center;
   height: 20%;
@@ -74,14 +74,14 @@ export default {
 img {
   height: 40px;
 }
-.nav {
+.sidebar__links {
   height: 70%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
 }
-.home-link {
+.sidebar__links--home {
   width: 150px;
   height: 30px;
   border-radius: 20px;
@@ -91,12 +91,12 @@ img {
   justify-content: center;
   align-items: center;
 }
-.my-profile {
+.group__profile {
   width: 200px;
   display: flex;
   justify-content: space-around;
 }
-.my-photo {
+.group__photo {
   width: 40px;
   height: 40px;
   display: flex;
@@ -108,7 +108,7 @@ img {
   font-family: "Josefin Sans", sans-serif;
   font-size: 20px;
 }
-.group-name {
+.group__name {
   font-family: "Josefin Sans", sans-serif;
   font-size: 16px;
   color: #424b54;
@@ -127,14 +127,14 @@ img {
     padding: 0px 10px;
     align-items: center;
   }
-  .logo {
+  .sidebar__logo {
     height: unset;
     padding: 0px;
   }
-  .my-photo {
+  .group__photo {
     display: none;
   }
-  .nav {
+  .sidebar__links {
     width: 55%;
     height: unset;
     flex-direction: row;
@@ -142,23 +142,23 @@ img {
   img {
     height: 20px;
   }
-  .home-link {
+  .sidebar__links--home {
     width: 60px;
   }
-  .my-profile {
+  .group__profile {
     width: 160px;
     text-align: right;
   }
-  .group-name {
+  .group__name {
     font-size: 12px;
   }
   @media screen and (max-width: 450px) {
-    .home-link {
+    .sidebar__links--home {
       display: none;
     }
-    .nav {
-    width: unset;
-  }
+    .sidebar__links {
+      width: unset;
+    }
   }
 }
 </style>

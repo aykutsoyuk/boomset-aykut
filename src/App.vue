@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <div class="main-container">
+    <div class="main">
       <Loading v-if="mainLoading" />
-      <div v-if="!mainLoading" class="container">
+      <div v-if="!mainLoading" class="main__container">
         <Sidebar :groupsData="groups" @backToHome="backToHome()" />
         <Home
           v-if="!showDetails"
@@ -95,9 +95,9 @@ export default {
       .then((response) => response.json())
       .then((result) => {
         this.getEvents(result.results);
-        this.mainLoading = false
       })
-      .catch((error) => console.log("error", error));
+      .catch((error) => console.log("error", error))
+      .finally(() => this.mainLoading = false)
     // Request to take groups data
     fetch("/groups", this.requestOptions)
       .then((response) => response.json())
@@ -124,7 +124,7 @@ body {
   height: 100vh;
 }
 
-.main-container {
+.main {
   width: 100%;
   height: 100%;
   display: flex;
@@ -133,7 +133,7 @@ body {
   background-color: #fcfcfc;
 }
 
-.container {
+.main__container {
   width: 98%;
   height: 98%;
   display: flex;
@@ -143,7 +143,7 @@ body {
   border-radius: 20px;
 }
 @media screen and (max-width: 768px), screen and (max-height: 600px) {
-  .container {
+  .main__container {
     flex-direction: column;
     padding: 10px 0px;
     justify-content: unset;
