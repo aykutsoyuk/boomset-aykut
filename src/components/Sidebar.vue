@@ -117,7 +117,7 @@ img {
   .sidebar {
     background-color: #f7b538;
     width: 100%;
-    max-height: 70px;
+    max-height: 50px;
     min-height: 50px;
     display: flex;
     flex-direction: row;

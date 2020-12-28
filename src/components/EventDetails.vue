@@ -1,5 +1,8 @@
 <template>
   <div class="details-container">
+    <div class="event-header">
+    <span>{{ eventData.name }}</span>
+    </div>
     <div class="event-data">
       <div class="details">
         <div class="image"></div>
@@ -29,23 +32,12 @@
             Dolorum suscipit deserunt beatae inventore hic tenetur quod nemo?
           </p>
         </div>
-        <div style="color: #424b54; font-size: 32px">
+        <div style="color: #424b54; font-size: 24px">
           {{ eventGuests }} Guests
         </div>
-        <button class="back-button" @click="backToHome()">
-          <span
-            style="
-              color: #fcfcfc;
-              font-family: 'Josefin Sans', sans-serif;
-              font-size: 20px;
-              margin-top: 4px;
-            "
-            >Go back</span
-          >
-        </button>
       </div>
       <div class="sessions-container">
-        <h2 style="color: #424b54">Sessions</h2>
+        <h3 style="color: #424b54">Sessions</h3>
         <div
           v-for="session in sortedSessions(eventSessions)"
           :key="session.id"
@@ -58,6 +50,17 @@
             {{ session.name }}
           </h4>
         </div>
+        <button class="back-button" @click="backToHome()">
+          <span
+            style="
+              color: #fcfcfc;
+              font-family: 'Josefin Sans', sans-serif;
+              font-size: 20px;
+              margin-top: 4px;
+            "
+            >Go back</span
+          >
+        </button>
       </div>
     </div>
   </div>
@@ -97,7 +100,7 @@ export default {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  height: 97%;
   overflow: scroll;
   border-left: 2px solid rgba(204, 204, 204, 0.24);
   border-radius: 2px;
@@ -140,6 +143,7 @@ export default {
   justify-content: center;
   align-items: center;
   border: none;
+  margin-top: 60px;
 }
 .image {
   width: 100%;
@@ -148,31 +152,43 @@ export default {
   border-radius: 20px;
   background-color: #f7b538;
 }
+.event-header {
+  text-align: center;
+  font-size: 24px;
+  font-family: "Josefin Sans", sans-serif;
+  line-height: 30px;
+  font-weight: 700;
+  color: #424b54;
+}
 @media screen and (max-width: 768px) {
+  .sessions-container {
+    justify-content: space-between;
+  }
   .details-container {
     width: 100%;
     height: unset;
     border: none;
   }
-  .back-button {
-    margin-top: 10px;
-  }
   .event-data {
     border: none;
   }
 }
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 550px) {
   .event-data {
     border: none;
     flex-direction: column;
   }
   .details {
     width: unset;
+    padding-bottom: 10px;
   }
   .sessions-container {
     width: 100%;
     border-left: unset;
     border-top: 2px solid rgba(204, 204, 204, 0.24);
+    margin-top: 20px;
+  }
+  .back-button {
     margin-top: 20px;
   }
 }

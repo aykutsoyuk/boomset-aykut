@@ -1,6 +1,7 @@
 <template>
   <div class="home">
     <div class="events">
+      <input class="search-bar" type="text" v-model="searchKey" placeholder="Search events">
       <div
         v-for="event in sortedEvents(eventsData)"
         :key="event.id"
@@ -37,12 +38,17 @@
 export default {
   name: "Home",
   props: ["eventsData"],
+  data(){
+    return {
+      searchKey: "",
+    }
+  },
   methods: {
     goToDetails(eventId) {
       this.$emit("goToDetails", eventId);
     },
     sortedEvents(events) {
-      return events.sort((a, b) => (a.name > b.name ? 1 : -1));
+      return events.filter(event => event.name.toLowerCase().includes(this.searchKey.toLowerCase())).sort((a, b) => (a.name > b.name ? 1 : -1));
     },
   },
 };
@@ -95,6 +101,26 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+}
+.search-bar {
+  padding-left: 20px;
+  width: 50%;
+  height: 40px;
+  border: none;
+  background-color: rgba(192, 192, 192, 0.233);
+  color: #424b547e;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 20px;
+}
+.search-bar::-webkit-input-placeholder {
+  color: #424b5473;
+}
+.search-bar:focus {
+  border: 2px solid #f7b538;
+  outline: none;
+  padding-left: 18px;
 }
 @media screen and (max-width: 768px) {
   .home {
