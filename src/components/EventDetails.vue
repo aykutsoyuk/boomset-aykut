@@ -154,5 +154,26 @@ export default {
     height: unset;
     border: none;
   }
+  .back-button {
+    margin-top: 10px;
+  }
+  .event-data {
+    border: none;
+  }
+}
+@media screen and (max-width: 450px) {
+  .event-data {
+    border: none;
+    flex-direction: column;
+  }
+  .details {
+    width: unset;
+  }
+  .sessions-container {
+    width: 100%;
+    border-left: unset;
+    border-top: 2px solid rgba(204, 204, 204, 0.24);
+    margin-top: 20px;
+  }
 }
 </style>

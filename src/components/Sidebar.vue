@@ -117,7 +117,8 @@ img {
   .sidebar {
     background-color: #f7b538;
     width: 100%;
-    height: 70px;
+    max-height: 70px;
+    min-height: 50px;
     display: flex;
     flex-direction: row;
     border: none;
@@ -150,6 +151,14 @@ img {
   }
   .group-name {
     font-size: 12px;
+  }
+  @media screen and (max-width: 450px) {
+    .home-link {
+      display: none;
+    }
+    .nav {
+    width: unset;
+  }
   }
 }
 </style>

@@ -102,5 +102,19 @@ export default {
     height: unset;
     border: none;
   }
+  .events {
+    border: none;
+  }
+}
+@media screen and (max-width: 450px) {
+  .event-container {
+   flex-direction: column;
+  }
+  .event-image {
+    margin: 0px;
+  }
+  .event-info {
+    text-align: center;
+  }
 }
 </style>

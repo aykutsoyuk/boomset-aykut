@@ -141,6 +141,7 @@ body {
   .container {
     flex-direction: column;
     padding: 10px 0px;
+    justify-content: unset;
   }
 }
 </style>
