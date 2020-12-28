@@ -1,7 +1,8 @@
 <template>
   <div id="app">
     <div class="main-container">
-      <div class="container">
+      <Loading v-if="mainLoading" />
+      <div v-if="!mainLoading" class="container">
         <Sidebar :groupsData="groups" @backToHome="backToHome()" />
         <Home
           v-if="!showDetails"
@@ -24,6 +25,7 @@
 import Sidebar from "./components/Sidebar.vue";
 import Home from "./components/Home.vue";
 import EventDetails from "./components/EventDetails.vue";
+import Loading from "./components/Loading.vue";
 
 export default {
   name: "App",
@@ -31,6 +33,7 @@ export default {
     Sidebar,
     Home,
     EventDetails,
+    Loading,
   },
   data() {
     return {
@@ -40,6 +43,7 @@ export default {
       eventData: null,
       eventGuests: null,
       showDetails: false,
+      mainLoading: true,
       requestOptions: {
         method: "GET",
         headers: {
@@ -91,6 +95,7 @@ export default {
       .then((response) => response.json())
       .then((result) => {
         this.getEvents(result.results);
+        this.mainLoading = false
       })
       .catch((error) => console.log("error", error));
     // Request to take groups data

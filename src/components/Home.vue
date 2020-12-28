@@ -1,6 +1,7 @@
 <template>
   <div class="home">
-    <div class="events">
+    <Loading v-if="detailsLoading" />
+    <div v-if="!detailsLoading" class="events">
       <input class="search-bar" type="text" v-model="searchKey" placeholder="Search events">
       <div
         v-for="event in sortedEvents(eventsData)"
@@ -35,16 +36,22 @@
 </template>
 
 <script>
+import Loading from "./Loading.vue";
 export default {
   name: "Home",
   props: ["eventsData"],
+  components: {
+    Loading
+  },
   data(){
     return {
       searchKey: "",
+      detailsLoading: false,
     }
   },
   methods: {
     goToDetails(eventId) {
+      this.detailsLoading = true
       this.$emit("goToDetails", eventId);
     },
     sortedEvents(events) {
@@ -65,6 +72,9 @@ export default {
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
   padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .events {
   display: flex;
