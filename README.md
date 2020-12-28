@@ -5,8 +5,6 @@ Aykut Söyük
 
 28.12.2020
 
-[Uygulamaya git](https://aykutsoyuk.github.io/boomset-aykut/)
-
 ### Uygulamanın Özellikleri
 
 * Proje Vue framework ile Boomset Public API kullanılarak oluşturulmuştur.
